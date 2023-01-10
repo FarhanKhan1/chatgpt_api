@@ -1,8 +1,16 @@
 from pyChatGPT import ChatGPT
+import config
 import time 
-api = ChatGPT(auth_type='google', email='', password='')
 
-resp = api.send_message("write a summarized essay on Allama Iqbal.")
+email = config.email
+password = config.password
 
-print(resp['message'])
-time.sleep(20)
+api = ChatGPT(auth_type='google', email=email, password=password)
+
+while True:
+    
+    prompt = input("Ask chatGPT: ")
+    resp = api.send_message(prompt)
+
+    print(resp['message'])
+    #time.sleep(20)
